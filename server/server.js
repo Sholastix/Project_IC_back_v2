@@ -35,6 +35,6 @@ app.use(routes.workoutRoute);
             console.log(`Server listening on port ${process.env.APP_PORT}.`);
         })
     } catch (err) {
-        console.log(`Connection failed: ${process.env.DB_CONNECT}`, err);
+        console.error(`Connection failed: ${process.env.DB_CONNECT}`, err);
     }
 }());
