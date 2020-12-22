@@ -15,15 +15,17 @@ app.use(cors());
 // Handle all routes in one file 'index.js' for import convinience.
 const routes = require('./routes/index');
 
-app.use(routes.exerciseRoute);
-app.use(routes.signinRoute);
-app.use(routes.signupRoute);
-app.use(routes.userRoute);
-app.use(routes.verifyEmailRoute);
-app.use(routes.workoutRoute);
+app.use('/api/',
+    routes.exerciseRoute,
+    routes.signinRoute,
+    routes.signupRoute,
+    routes.userRoute,
+    routes.verifyEmailRoute,
+    routes.workoutRoute
+);
 
 // Server start and connect to DB.
-(async function() {
+(async function () {
     try {
         await mongoose.connect(process.env.DB_CONNECT, {
             useCreateIndex: true,

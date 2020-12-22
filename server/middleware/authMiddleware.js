@@ -1,16 +1,17 @@
 const jwt = require('jsonwebtoken');
 
-module.exports = async (req, res, next) => {
+module.exports.authMdw = async (req, res, next) => {
+    const authHeader = req.get('Authorization');
+    if (!authHeader) {
+        res.status(401).json({ message: 'Token not provided!' });
+        return;
+    }
+
+    const token = authHeader.split(' ')[1];
+
     try {
-        const authHeader = req.get('Authorization');
-        if (!authHeader) {
-            res.status(401).json({ message: 'Token not provided!' });
-        }
-
-        const token = authHeader.replace('Bearer ', '');
-
         jwt.verify(token, process.env.ACCESS_SECRET_KEY, (err, user) => {
-            req.user = { userID: user };
+            req.user = { userID: user.sub };
             if (err) {
                 console.error(err);
             }

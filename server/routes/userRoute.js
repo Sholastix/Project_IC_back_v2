@@ -1,10 +1,10 @@
 const { Router } = require('express');
-const authMdw = require('../middleware/authMiddleware');
+const { authMdw } = require('../middleware/authMiddleware');
 const { userGet, userDelete } = require('../controllers/userController');
 
-const userRoute = Router();
+const router = Router();
 
-userRoute.get('/users/', authMdw, userGet);
-userRoute.delete('/users/delete/', authMdw, userDelete);
+router.get('/users', authMdw, userGet);
+router.delete('/users', authMdw, userDelete);
 
-module.exports = userRoute;
+module.exports = router;

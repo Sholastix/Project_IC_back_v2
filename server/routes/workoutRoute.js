@@ -1,12 +1,12 @@
 const { Router } = require('express');
-const authMdw = require('../middleware/authMiddleware');
+const { authMdw } = require('../middleware/authMiddleware');
 const { workoutGet, workoutPost, workoutPut, workoutDelete } = require('../controllers/workoutController');
 
-const workoutRoute = Router();
+const router = Router();
 
-workoutRoute.get('/workout/', authMdw, workoutGet);
-workoutRoute.post('/workout/create', authMdw, workoutPost);
-workoutRoute.put('/workout/update/:workoutID', authMdw, workoutPut);
-workoutRoute.delete('/workout/delete/:workoutID', authMdw, workoutDelete);
+router.get('/workout/', authMdw, workoutGet);
+router.post('/workout/', authMdw, workoutPost);
+router.put('/workout/update/:workoutID', authMdw, workoutPut);
+router.delete('/workout/delete/:workoutID', authMdw, workoutDelete);
 
-module.exports = workoutRoute;
+module.exports = router;

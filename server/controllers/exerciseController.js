@@ -24,7 +24,7 @@ const exerciseExactGet = async (req, res) => {
     }
 };
 
-// CREATE new exercises in a list of specific user.
+// CREATE new exercises in a list of specific user (by user ID).
 const exercisePost = async (req, res) => {
     try {
         const { userID } = req.user;
