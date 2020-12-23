@@ -11,18 +11,16 @@ module.exports.authMdw = async (req, res, next) => {
 
     try {
         jwt.verify(token, process.env.ACCESS_SECRET_KEY, (err, user) => {
-            req.user = { userID: user.sub };
             if (err) {
-                console.error(err);
+                throw err;
             }
+            req.user = { userID: user.sub };
         });
     } catch (err) {
         if (err instanceof jwt.JsonWebTokenError) {
             console.error(err);
             res.status(401).json({ message: 'Invalid Token!' });
             return;
-        } else {
-            throw err;
         }
     };
     next();

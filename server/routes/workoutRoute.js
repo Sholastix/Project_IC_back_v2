@@ -6,7 +6,7 @@ const router = Router();
 
 router.get('/workout/', authMdw, workoutGet);
 router.post('/workout/', authMdw, workoutPost);
-router.put('/workout/update/:workoutID', authMdw, workoutPut);
-router.delete('/workout/delete/:workoutID', authMdw, workoutDelete);
+router.put('/workout/:workoutID', authMdw, workoutPut);
+router.delete('/workout/:workoutID', authMdw, workoutDelete);
 
 module.exports = router;
