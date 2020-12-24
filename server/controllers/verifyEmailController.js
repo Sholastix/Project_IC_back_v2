@@ -7,13 +7,13 @@ const verifyEmail = async (req, res) => {
         const { email, verificationCode } = req.body;
         const user = await User.findOne({ email });
 
-    // Set JWT lifespan. 
-    const jwtLifespan = '1h';
+        // Set JWT lifespan. 
+        const jwtLifespan = '1h';
 
-    const jwtPayload = {
-        sub: user._id,
-        iat: Date.now(),
-    };
+        const jwtPayload = {
+            sub: user._id,
+            iat: Date.now(),
+        };
 
         if (verificationCode !== user.verificationCode) {
             return res.status(400).json({ message: 'Incorrect verification code.' });
