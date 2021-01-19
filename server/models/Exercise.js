@@ -12,9 +12,10 @@ const ExerciseSchema = new mongoose.Schema(
             required: true,
         },
 
-        userID: { 
+        owner: { 
             type: mongoose.Schema.Types.ObjectId, 
             ref: 'User',
+            required: true,
         },
     },
 
@@ -24,6 +25,4 @@ const ExerciseSchema = new mongoose.Schema(
     },
 );
 
-const ExerciseModel = mongoose.model('Exercise', ExerciseSchema);
-
-module.exports = ExerciseModel;
+module.exports.Exercise = mongoose.model('Exercise', ExerciseSchema);

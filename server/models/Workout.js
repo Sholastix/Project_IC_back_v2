@@ -8,9 +8,10 @@ const WorkoutSchema = new mongoose.Schema(
         },
 
         exercises: [{
-            exerciseID: {
+            _id: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'User',
+                ref: 'Exercise',
+                required: true,
             },
             measurment: {
                 type: Number,
@@ -21,10 +22,11 @@ const WorkoutSchema = new mongoose.Schema(
                 required: true,
             },
         }],
-        
-        userID: {
+
+        owner: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
+            required: true,
         },
     },
 
@@ -34,6 +36,4 @@ const WorkoutSchema = new mongoose.Schema(
     },
 );
 
-const WorkoutModel = mongoose.model('Workout', WorkoutSchema);
-
-module.exports = WorkoutModel;
+module.exports.Workout = mongoose.model('Workout', WorkoutSchema);
