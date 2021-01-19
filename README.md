@@ -38,21 +38,18 @@ ____________________________________________________________________
 
         4.4. 'USERS'
 
-             http://localhost:xxxx/api/users/
+             http://localhost:xxxx/api/user/
 
              GET profile of specific user (by user ID from token).
-             DELETE existed user's profile (by user ID from token).
 
         4.5. 'EXERCISES'
 
              http://localhost:xxxx/api/exercise/                   
 
-             GET exercises list of specific user (by user ID from token).
              CREATE new exercises in a list of specific user (by user ID from token).
 
              http://localhost:xxxx/api/exercise/:exerciseID
 
-             GET specific exercise (by exercise ID), which belongs to specific user.
              UPDATE already existed exercise (by exercise ID) in a list of specific user.
              DELETE specific exercise (by exercise ID) from list of specific user.
 
@@ -60,7 +57,6 @@ ____________________________________________________________________
 
              http://localhost:xxxx/api/workout/
 
-             GET workout of specific user (by user ID from token).
              CREATE new workouts in specific user's list (by user ID from token).
 
              http://localhost:xxxx/api/workout/:workoutID
